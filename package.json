@@ -1,0 +1,58 @@
+{
+  "name": "privmx-crypto",
+  "version": "1.0.11",
+  "typings": "./typings.d.ts",
+  "description": "JS crypto",
+  "license": "MIT",
+  "homepage": "https://github.com/simplito/privmx-crypto-js",
+  "keywords": [
+    "encryption",
+    "crypto"
+  ],
+  "author": {
+    "name": "Simplito Team",
+    "url": "https://simplito.com"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "asn1.js": "^4.9.1",
+    "bip39": "^2.2.0",
+    "bn.js": "^4.0.0",
+    "browserify-aes": "^1.0.1",
+    "bs58check": "~1.0.5",
+    "create-hash": "^1.1.1",
+    "create-hmac": "1.1.3",
+    "elliptic": "~6.2.3",
+    "parse-asn1": "^5.0.0",
+    "pbkdf2": "^3.0.4",
+    "privmx-exception": "^1.0.0",
+    "q": "^1.4.1",
+    "randombytes": "~2.0.1",
+    "seedrandom": "^2.4.2",
+    "typeforce": "^1.6.2",
+    "xtea": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-remove-strict-mode": "0.0.2",
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0",
+    "bower": "^1.8.0",
+    "browserify": "^13.1.1",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-sourcemaps": "^2.2.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "mocha": "^3.2.0",
+    "phantom": "^3.2.1",
+    "phridge": "^2.0.0",
+    "run-sequence": "^1.2.2",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-fs": "^2.4.4",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.8.0"
+  }
+}

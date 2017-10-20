@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <style> .n { word-break: break-all; word-wrap: break-word; }</style>
+</head>
+<body>
+    <div class="container"><div class="row">
+    <table class="table table-bordered table-condensed">
+        <tr>
+            <th>Test</th>
+            <th>Status</th>
+            <th>Time</th>
+        </tr>
+        <tr id="rsa-1">
+            <td class='n'>
+                rsaGenerateKey(2048) 
+                <button class="run btn btn-primary btn-xs">Run</button>
+            </td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="rsa-1b">
+            <td class='n'>
+                rsaDeriveKey(2048, "U60yfePAQ4OUPAPhSQU1gH/MhFRiSbw2vw1Chqm2Nzw=") 
+                <button class="run btn btn-primary btn-xs">Run</button>
+            </td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="rsa-2">
+            <td class='n'>rsaOaepEncrypt</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="rsa-3">
+            <td class='n'>rsaOaepDecrypt</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="rsa-4">
+            <td class='n'>rsaSign</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="rsa-5">
+            <td class='n'>rsaVerify</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="rsa-6">
+            <td class='n'>rsaVerify</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="eccGenerateKey">
+            <td class='n'>eccGenerateKey</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="eciesEncrypt">
+            <td class='n'>eciesEncrypt</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="eciesDecrypt">
+            <td class='n'>eciesDecrypt</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="ecdsaSign">
+            <td class='n'>ecdsaSign</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="ecdsaVerify-1">
+            <td class='n'>ecdsaVerify</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="ecdsaVerify-2">
+            <td class='n'>ecdsaVerify</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="key-1">
+            <td class='n'>encryptPrivateKey</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="key-2">
+            <td class='n'>decryptPrivateKey</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="key-3">
+            <td class='n'>extractPublicKey</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="aes-1">
+            <td class='n'>aes256CbcHmac256Encrypt</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="aes-2">
+            <td class='n'>aes256CbcHmac256Decrypt</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="aes-3">
+            <td class='n'>aes256CbcPkcs7Encrypt</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="aes-4">
+            <td class='n'>aes256CbcPkcs7Decrypt</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="aes-5">
+            <td class='n'>aes256Ecb</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="aes-6">
+            <td class='n'>aes256EcbDecrypt</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="sha-1">
+            <td class='n'>sha1</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="sha-2">
+            <td class='n'>sha256</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="sha-3">
+            <td class='n'>sha512</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="sha-4">
+            <td class='n'>hmacSha1</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="sha-5">
+            <td class='n'>hmacSha256</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="sha-6">
+            <td class='n'>hmacSha512</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="xtea-1">
+            <td class='n'>xteaEcbPkcs7Encrypt</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="xtea-2">
+            <td class='n'>xteaEcbPkcs7Decrypt</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="pbkdf2">
+            <td class='n'>pbkdf2 (4000 rounds)</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="tls12">
+            <td class='n'>prf_tls12</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+        <tr id="hkdfSha256">
+            <td class='n'>hkdfSha256</td>
+            <td class='s'></td>
+            <td class='t'></td>
+        </tr>
+    </table>
+    </div></div>
+
+<!-- Modal -->
+<div class="modal fade" id="test-error-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Error</h4>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="privmx-crypto.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script>
+    (function() {
+        var Q = require("q");
+        var privmxCrypto = require("privmx-crypto");
+        var Buffer = require("buffer").Buffer;
+
+        window.Service = privmxCrypto.crypto.Service;
+        Service.init("privmx-crypto.js");
+
+        var rsaKey = 
+            "-----BEGIN PRIVATE KEY-----\n" +
+            "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCmED+CnxGtjShE\n" +
+            "HFTV0GH+bAWvev4FU6YJy1uP/tURdltmuinoWbTR42RQxkcmnW32yM90yX9y5tMa\n" +
+            "ASBKOWaYc6nxBWkIR9k9zhMMj6QneS+WbPmUyIGlO29aqBHfhV602qau2hu5vJWq\n" +
+            "M88rgRxlOlKUakNPlL+Z5TX3lbUVwXkThSg/JUC/uSDv/ukyq+h7n4KOtJj1Bm05\n" +
+            "sD03yKnfkxM+yTGaTKb5LonbM5+48QaPepXNkQjQ63b+EAZJlsAL7JSqXYzHnNL8\n" +
+            "Rqtr78bp+aeG6B5H+a5l00mnuK6x1+MRqQdaBTeAo4vBOqH3xUJaBiV660+P0Xmq\n" +
+            "ZPww/UShAgMBAAECggEAXZoS8kFO6ZAC/kEp4ErQsWOZ4MtmmwIHOMYTGhr9ZhZc\n" +
+            "do7ASGMn9JZDWPQp7q4V6WBO7vkUiWNp4eJ4nN214oBvbZcrGKvG23toaVAdqtI3\n" +
+            "7IYIN8C8srHJlkPdryuxsib8hNoTfqG5inIhd9gSdUxmd5ldz2F8jfYQcTlFFLlM\n" +
+            "CVKJa5jPVajEzEU+dmNoyEnArPQ4xE6eTc2Z1behPGU9XUtTUPfr2rtZYqLSj/4r\n" +
+            "GaOCYeQwRbi86lKKthDtUR6lpyq5PlifzfkEa7y6i1W2gu3XCgD4Bae9L/ZXHlJv\n" +
+            "9dIoF+QR9DERPNAfsP1PZufJI+rclcP4eYKxP4ZF8QKBgQDZv5IqSReouNiKlaum\n" +
+            "fSjXrWOg+bTiVrLkG9dy0wAfzlsCI947a6JLOfnRoEng1lijNuUavREB2F/9QLrU\n" +
+            "kbZJiUM7+3qNsUnwnN1z5tNCPTbEeIvpo+zl7dRSiQYTro1tJzAspy+u0qnAzjdU\n" +
+            "ji0b2xCV6VIYbqeryKRxgKefKwKBgQDDPFdSWw02kl3lLt9z3DmHUDng7PpZ8dpS\n" +
+            "q5xctTftlYpGJRYlaowcBsk+92JZi/aWy/6Y4dQWwiZjStmxEAfp5a4KKm9X11t2\n" +
+            "d0zs3PM596IGc21Z3uaZBUMOIU6DQG6JfCEa8NgSSHEew29TgNhSJ4izm4zZNSx6\n" +
+            "RCNuCbylYwKBgDekb4pksSoJSjRnuLxLoWMzyJC7HpD0DLSjtLN/3blC9xid580R\n" +
+            "XSCSCRebOSW+QFo8zeC+TZlGHIlPwC5PqeAytj6erZuFoVpeC2zxoCx+Df+4ujAT\n" +
+            "FpdO5gHNSANBiJxK9lGCy3mGFaDSUWtHBZnnqd5VCAh8RlZsaDEk6jCPAoGBAMLM\n" +
+            "PBxR+PcQR1taz12cyFG4vGcuTATeiYWe8N6Xefw2Dsc6TcR7cNyt8LJAxwKt4hZH\n" +
+            "5/nGqYUjpoW/s0E1y4+WuXYvLPUqTXoAQuK6+nxGFoX1OZBIFTFszKEWnm3bJe9L\n" +
+            "yQRGdnCXkzasrTFWB4DBLWZ3t6spoP1Fa0xprq4dAoGABbVLEKK+zBbjOKolHy6B\n" +
+            "iMkw7KtHm/FPZlHnf2FsCnpP8mbAya2SeIUXYI8QRyjhhLXVGH23PIjEWUJWpO2v\n" +
+            "IvIWvhVOcbRKCGR9RkU5LaTa4E9tva/1dQJ1t6cjFIIKIHDJoNIrxgSJAlvHBVuQ\n" +
+            "C5unsHEfF05C4X4XFWrYK7A=\n" +
+            "-----END PRIVATE KEY-----";
+        var rsaPubKey =
+            "-----BEGIN PUBLIC KEY-----\n" +
+            "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAphA/gp8RrY0oRBxU1dBh\n" +
+            "/mwFr3r+BVOmCctbj/7VEXZbZrop6Fm00eNkUMZHJp1t9sjPdMl/cubTGgEgSjlm\n" +
+            "mHOp8QVpCEfZPc4TDI+kJ3kvlmz5lMiBpTtvWqgR34VetNqmrtobubyVqjPPK4Ec\n" +
+            "ZTpSlGpDT5S/meU195W1FcF5E4UoPyVAv7kg7/7pMqvoe5+CjrSY9QZtObA9N8ip\n" +
+            "35MTPskxmkym+S6J2zOfuPEGj3qVzZEI0Ot2/hAGSZbAC+yUql2Mx5zS/Eara+/G\n" +
+            "6fmnhugeR/muZdNJp7iusdfjEakHWgU3gKOLwTqh98VCWgYleutPj9F5qmT8MP1E\n" +
+            "oQIDAQAB\n" +
+            "-----END PUBLIC KEY-----";
+        var aesKey = Buffer.from("asdasddasdfqwergcvbn123456789vvd");
+        var xteaKey = Buffer.from("okns34567asddfgh");
+        var iv = Buffer.from("zxcasdqwertyfghj");
+        var eccPriv1 =
+            "-----BEGIN PRIVATE KEY-----\n" +
+            "MIGEAgEAMBAGByqGSM49AgEGBSuBBAAKBG0wawIBAQQgGE3MgbhevfFPDgy00Qh0\n" +
+            "pN0umPLc3rLTJEnxKc9WC+ihRANCAASQfYlrQ4DFmQl+2D4ifKbLPNtQGX/ABGPE\n" +
+            "yQ2qS28DTCWhlmpSKG3RBPb5FpkJ9o8MkxwggcobbQPgAzeRIs3e\n" +
+            "-----END PRIVATE KEY-----";
+        var eccPub1 =
+            "-----BEGIN PUBLIC KEY-----\n" +
+            "MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEkH2Ja0OAxZkJftg+InymyzzbUBl/wARj\n" +
+            "xMkNqktvA0wloZZqUiht0QT2+RaZCfaPDJMcIIHKG20D4AM3kSLN3g==\n" +
+            "-----END PUBLIC KEY-----";
+        var eccPriv2 =
+            "-----BEGIN PRIVATE KEY-----\n" +
+            "MIGEAgEAMBAGByqGSM49AgEGBSuBBAAKBG0wawIBAQQgzw1Lhj07bkwwXjNG8WZP\n" +
+            "iMw7e2JBnFXsML1E6jMN2PGhRANCAAT0WA0LpBdLkeZlEcLO4B61d0yKacSoyxZm\n" +
+            "gAeDsoTrlVQkHv0AVrjLhsJTSUKCfPoowSyZQhKeCD3JlVYAtD0E\n" +
+            "-----END PRIVATE KEY-----";
+        var eccPub2 =
+            "-----BEGIN PUBLIC KEY-----\n" +
+            "MFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAE9FgNC6QXS5HmZRHCzuAetXdMimnEqMsW\n" +
+            "ZoAHg7KE65VUJB79AFa4y4bCU0lCgnz6KMEsmUISngg9yZVWALQ9BA==\n" +
+            "-----END PUBLIC KEY-----";
+
+        var encrypted, signature, cryptedKey;
+
+        var repeat = function(n, f) { return f().then(function(result) { if (n > 0) return repeat(n-1, f); return result; }); };
+        var tests = [
+            {
+                id: 'rsa-2',
+                repeat: 10,
+                promise: function() {
+                    return Service.rsaOaepEncrypt(rsaKey, Buffer.from("terefere")).then(function(data){
+                        encrypted = data;
+                    })
+                }
+            }, {
+                id: 'rsa-3',
+                repeat: 10,
+                promise: function() {
+                    return Service.rsaOaepDecrypt(rsaKey, encrypted).then(function(data){
+                        if (data.toString() != "terefere") {
+                            throw new Error("wrong decrypted data");
+                        }
+                    })
+                }
+            }, {
+                id: 'rsa-4',
+                repeat: 10,
+                promise: function() {
+                    return Service.rsaSign(rsaKey, Buffer.from("terefere")).then(function(data){
+                        signature = data;
+                    })
+                }
+            }, {
+                id: 'rsa-5',
+                repeat: 10,
+                promise: function() {
+                    return Service.rsaVerify(rsaKey, signature, Buffer.from("terefere")).then(function(data){
+                        if(data == false) {
+                            throw new Error("Signature was good")
+                        }
+                    })
+                }
+            }, {
+                id: 'rsa-6',
+                repeat: 10,
+                promise: function() {
+                    return Service.rsaVerify(rsaKey, signature, Buffer.from("tearefere")).then(function(data){
+                        if(data == true) {
+                            throw new Error("Signature wasn't good")
+                        }
+                    })
+                }
+            }, {
+                id: 'eccGenerateKey',
+                repeat: 10,
+                promise: function() {
+                    return Service.eccGenerateKey();
+                }
+            }, {
+                id: 'eciesEncrypt',
+                repeat: 10,
+                promise: function() {
+                    return Service.eciesEncrypt(eccPriv1, eccPub2, Buffer.from("terefere")).then(function(data) {
+                        encrypted = data;
+                    });
+                }
+            }, {
+                id: 'eciesDecrypt',
+                repeat: 10,
+                promise: function() {
+                    return Service.eciesDecrypt(eccPriv2, eccPub1, encrypted).then(function(data) {
+                        if( !data.equals(Buffer.from("terefere")) )
+                            throw new Error("Wrong decrypted data");
+                    });
+                }
+            }, {
+                id: 'ecdsaSign',
+                repeat: 10,
+                promise: function() {
+                    return Service.ecdsaSign(eccPriv1, Buffer.from("terefere")).then(function(data) {
+                        signature = data;
+                    });
+                }
+            }, {
+                id: 'ecdsaVerify-1',
+                repeat: 10,
+                promise: function() {
+                    return Service.ecdsaVerify(eccPub1, signature, Buffer.from("terefere")).then(function(result) {
+                        if( result === false )
+                            throw new Error("Signature was good");
+                    });
+                }
+            }, {
+                id: 'ecdsaVerify-2',
+                repeat: 10,
+                promise: function() {
+                    return Service.ecdsaVerify(eccPub1, signature, Buffer.from("tereferer")).then(function(result) {
+                        if( result === true )
+                            throw new Error("Signature wasn't good");
+                    });
+                }
+            }, {
+                id: 'key-1',
+                repeat: 1,
+                promise: function() {
+                    return Service.encryptPrivateKey(rsaKey, "terefere").then(function(data){
+                        cryptedKey = data;
+                    })
+                }
+            }, {
+                id: 'key-2',
+                repeat: 1,
+                promise: function() {
+                    return Service.decryptPrivateKey(cryptedKey, "terefere").then(function(data){
+                        if (data != rsaKey) {
+                            throw new Error("wrong key", data)
+                        }
+                    })
+                }
+            }, {
+                id: 'key-3',
+                repeat: 100,
+                promise: function() {
+                    return Service.extractPublicKey(rsaKey).then(function(data){
+                        if (data != rsaPubKey) {
+                            throw new Error("wrong key", data)
+                        }
+                    })
+                }
+            }, {
+                id: 'aes-1',
+                repeat: 100,
+                promise: function() {
+                    return Service.aes256CbcHmac256Encrypt(Buffer.from("terefere"), aesKey).then(function(data){
+                        encrypted = data;
+                    })
+                }
+            }, {
+                id: 'aes-2',
+                repeat: 100,
+                promise: function() {
+                    return Service.aes256CbcHmac256Decrypt(encrypted, aesKey).then(function(data){
+                        if (data.toString() != "terefere") {
+                            throw new Error("Wrong decrypted data")
+                        }
+                    })
+                }
+            }, {
+                id: 'aes-3',
+                repeat: 100,
+                promise: function() {
+                    return Service.aes256CbcPkcs7Encrypt(Buffer.from("terefere"), aesKey, iv).then(function(data){
+                        encrypted = data;
+                    })
+                }
+            }, {
+                id: 'aes-4',
+                repeat: 100,
+                promise: function() {
+                    return Service.aes256CbcPkcs7Decrypt(encrypted, aesKey, iv).then(function(data){
+                        if (data.toString() != "terefere") {
+                            throw new Error("Wrong decrypted data")
+                        }
+                    })
+                }
+            }, {
+                id: 'aes-5',
+                repeat: 100,
+                promise: function() {
+                    return Service.aes256Ecb(Buffer.from("terefereterefereterefereterefere"), aesKey).then(function(data){
+                        encrypted = data;
+                    })
+                }
+            }, {
+                id: 'aes-6',
+                repeat: 100,
+                promise: function() {
+                    return Service.aes256EcbDecrypt(encrypted, aesKey).then(function(data){
+                        if (data.toString() != "terefereterefereterefereterefere") {
+                            throw new Error("Wrong decrypted data")
+                        }
+                    })
+                }
+            }, {
+                id: 'sha-1',
+                repeat: 100,
+                promise: function() {
+                    return Service.sha1(Buffer.from("terefere")).then(function(data){
+                        if(data.toString('hex') != '79935d65d32f209c1bfde5907d3116cc9c3f6eb8') {
+                            throw new Error("wrong hash")
+                        }
+                    })
+                }
+            }, {
+                id: 'sha-2',
+                repeat: 100,
+                promise: function() {
+                    return Service.sha256(Buffer.from("terefere")).then(function(data){
+                        if(data.toString('hex') != 'f1265cdafe2b49f6ec17a6c15aa6adfd8b1e931b50d5ce6701faf25a57c212c0') {
+                            throw new Error("wrong hash")
+                        }
+                    })
+                }
+            }, {
+                id: 'sha-3',
+                repeat: 100,
+                promise: function() {
+                    return Service.sha512(Buffer.from("terefere")).then(function(data){
+                        if(data.toString('hex') != 'b470626e221de0a18b7e322260109278ca08497649953504d4d9d03bf139ae0ff5bb2700cd7321882236639eec4c27f8f0909c5c7ed08deba87d981421530261') {
+                            throw new Error("wrong hash")
+                        }
+                    })
+                }
+            }, {
+                id: 'sha-4',
+                repeat: 100,
+                promise: function() {
+                    return Service.hmacSha1(aesKey, Buffer.from("terefere")).then(function(data){
+                        if(data.toString('hex') != 'a942b7bf4e79aa1f07dc987526e7f8fe44328c91') {
+                            throw new Error("wrong hash")
+                        }
+                    })
+                }
+            }, {
+                id: 'sha-5',
+                repeat: 100,
+                promise: function() {
+                    return Service.hmacSha256(aesKey, Buffer.from("terefere")).then(function(data){
+                        if(data.toString('hex') != 'cbcb3af374222313f6a3ff851bea061fc21a37b8ec31132166b4162cf71a6a33') {
+                            throw new Error("wrong hash")
+                        }
+                    })
+                }
+            }, {
+                id: 'sha-6',
+                repeat: 100,
+                promise: function() {
+                    return Service.hmacSha512(aesKey, Buffer.from("terefere")).then(function(data){
+                        if(data.toString('hex') != '44da280cac32eabc2f91f40b4cb46bc017763ef273939406a06b3bb19a2ac8c1d30680620677b404c7b14aa3104e7d22e491c0fb79dc16d1c426facfa95f2c5c') {
+                            throw new Error("wrong hash")
+                        }
+                    })
+                }
+            }, {
+                id: 'xtea-1',
+                repeat: 100,
+                promise: function() {
+                    return Service.xteaEcbPkcs7Encrypt(Buffer.from("terefere"), xteaKey).then(function(data){
+                        encrypted = data;
+                    })
+                }
+            }, {
+                id: 'xtea-2',
+                repeat: 100,
+                promise: function() {
+                    return Service.xteaEcbPkcs7Decrypt(encrypted, xteaKey).then(function(data){
+                        if(data.toString() != 'terefere') {
+                            throw new Error("Wrong decrypted data")
+                        }
+                    })
+                }
+            }, {
+                id: 'pbkdf2',
+                repeat: 1,
+                promise: function() {
+                    return Service.pbkdf2(Buffer.from("passphrase"), Buffer.from("salt"), 4000, 32).then(function(data){
+                        if(data.toString('hex') != '4f88ea8b90cf54b6d688c7e36e8d5d4e6569b33977377f83111bcb188b805058') {
+                            throw new Error("Unexpected output")
+                        }
+                    })
+                }
+            }, {
+                id: 'tls12',
+                repeat: 100,
+                promise: function() {
+                    return Service.prf_tls12(aesKey, Buffer.from("terefere"), 128).then(function(data){
+                        if(data.toString('hex') != '85ab228e3b1a1dfa698c1656a59476d467b1f8010b8d6586abeb7b4b1a99e17f7aedbe904f039353663dffbae55186f1d067f87892687b120fd9f824220a8f56201cbff75abe2b463e4b5ff36e2300ba7cbf8f4b53224f85342946dfa74046f19cff3f2e81de0e47e7bf9eb9e61e47facf385ef34b32c68118ac01e6c2dce41a') {
+                            throw new Error("Unexpected output")
+                        }
+                    })
+                }
+            }, {
+                id: 'hkdfSha256',
+                repeat: 100,
+                promise: function() {
+                    return Service.hkdfSha256(aesKey, Buffer.from("terefere"), 128).then(function(data){
+                        if(data.toString('hex') != '80604a67059a911908a4a547f57c69622978f1bd65b93badf1ddcf9de5b13cb7b73e149d02efef64c785216f879591db2c9ff700a626160f49523eccbb851dce07f0fefafea2e55fff7d34c78c7b96eb50b21cb1b704de27b408b8eecb04b9ae6c8713c6023d01140055dec1727f563359daa4eba08eeeda05be229079e691d3') {
+                            throw new Error("Unexpected output")
+                        }
+                    })
+                }
+            }
+        ];
+
+        var runTests = {
+            "rsa-1": {
+                id: 'rsa-1',
+                repeat: 1,
+                promise: function(){
+                    return Service.rsaGenerateKey(2048).then(function(key){
+                        rsaKey = key;
+                    })
+                }
+            },
+            "rsa-1b": {
+                id: 'rsa-1b',
+                repeat: 1,
+                promise: function(){
+                    return Service.rsaDeriveKey(2048, "U60yfePAQ4OUPAPhSQU1gH/MhFRiSbw2vw1Chqm2Nzw=").then(function(key){
+                        if (key != 
+                                '-----BEGIN PRIVATE KEY-----\n' +
+                                'MIIEugIBADANBgkqhkiG9w0BAQEFAASCBKQwggSgAgEAAoIBACTdNhWxjjRpI76f\n' +
+                                'UOyZHuPX3tnGRqoPSFfzvJG3Jq2nevTNBDcSeEEDd6hAPGCmJZ2UGO5+2mkkiI58\n' +
+                                'levo/6ouBLB2hc87TzgcKTQowLioaw1hXH28LE0/FY9F6Ec83Dyyv9Yz8Ytj3HkL\n' +
+                                'dPd//WJyV6X2bqjJ0Bhby998S4Vxs4siHyUJLfF1JS22Im3uirgGS4ACs1zD/qQ7\n' +
+                                'ZGzQlz4egnAQKOERjSJBjz19dCn4S1X3cE9JmAY2tEIxBghpvJWAsWA7shDrpm31\n' +
+                                'Hkdn5iulBxN/4kdxl8BHHohSjwfiqJ3YqoVCVo/e40luQi2TfiZbcoRj3K+/2GjW\n' +
+                                'Byb7SPsCAwEAAQKCAQAbKIWh8c9MOXFGDGU4CY7CWNUrJ3ID84JemYiA6aerI8nn\n' +
+                                '8+p5EDhb3UwYPkq9AWqQ7vx3KCmMcIfSQWLKDDveikyWHJt0EsPIGKcacDObVyiX\n' +
+                                'EPVtBGa2+hTOGriHUwUGCsJd8qKvCIDzBEfF1xs7nfWIpUbdPuD6MRa/rPiOdGPY\n' +
+                                'PjfNpDH/61YhbrEg1MZz64EFxq5jBYHkLmDpQTCYkBCn+y/vnrOc6Z1V4/913mZt\n' +
+                                '5DAJaxDkoTQbVO0V+lZ91mmWpY1HmeEKGvyv+XesXUx/RktGuXr3FF4oVRFG3XIV\n' +
+                                'yM7dExAdTFMymwtYThxnXBTq+KaGkG6OK/8/vtchAoGBAPnvewAYTkpaTZy4wUEO\n' +
+                                'xCNu6JhV3oufPWN8nTGSC0qpSMP1xMdxBdvqaEoqJw/1ZiSxDfL33JB/Y4iAXGQP\n' +
+                                'DqRsKSekGm7FolRQrixSfO9Gk3RS8/VTJ9TrfS4SGEnScLyESNjbZb5eZ0WaUM71\n' +
+                                'HQnoD/9wCR3EDC2ZekQSwjfpAoGAJcIzCPjg8HwYeX1yQLfXAQC4YXju6OvxEa5w\n' +
+                                'wM56zeRwO4ucuiZHQB0xhJ6Y+BV9gK8vNrU57OEnAVDNxPwgav3DiTL013EK247B\n' +
+                                'Gm2wrJHXJjPq+u+eQh+AB+o7noIso485HUCHZ0COEBGC/LWpJliycAqEEtvCJZhB\n' +
+                                'VsngD0MCgYBlKD0zO6MsSsJQ5SIqj6xo3vG6/j41anzxMDV7I634SO3PikBbrG3/\n' +
+                                'pS8SnV70AZGW1iZcKV+XCEgjrjg2szVs7O33Ql8EaG8cCw+DlttECN+TXCOrLj3X\n' +
+                                '2nvu0poL/uVsF2pYguv6EcFglWWRbfmT0d3vt8uoxXlcV1r6BFGhSQKBgAxmLj4n\n' +
+                                'BC7UgXD7ydYIyLjSlLmlbcbdG+ezgeE+rMMJ3fUfzpKuWT1rmMQ1FIR7AiCM5pMv\n' +
+                                'hdsMwLNE5p1mMfsQY/Kc4hwRSgB5a14TYS36Ik2wRNysbSrHj1KKD5PoqWH4eUfq\n' +
+                                '1cwJPd128q2rteUawVXbji1nLuULj4FBf6tjAoGAWerO2c4PB1Tbm1AWSHcYvInY\n' +
+                                'Vo8hTVRH4rw74ATHlU6c+L2ePfEHMPJB/hwpQStzGKH47PL8/puD2oDY4YgeYh7l\n' +
+                                '3lYlDKCVu3swtueVBzLM59t/kFppzs99125x2eTRbgc41rY91AO9ooceZpwkmzGL\n' +
+                                'lg0XqwYBloddujTcU1w=\n' +
+                                '-----END PRIVATE KEY-----'
+                           )
+                        {
+                            throw new Exception("Unexpected result");
+                        }
+                    })
+                }
+            }
+        }
+
+        var action = function(currentTest){
+            var start = performance.now();
+            var id = currentTest.id;
+            var elem = $("#" + id);
+            var count = currentTest.repeat || 1;
+            var $state = elem.find("td.s");
+            $state.removeClass("bg-success bg-danger").text("Pending");
+            $state.data("error", false);
+
+            return repeat(count, currentTest.promise)
+                .then(function() {
+                    var end = performance.now();
+                    elem.find("td.t").text((end - start).toFixed(1) + " ms / " + count + " op");
+                    $state.addClass("bg-success").text("OK");
+                })
+                .catch(function(err) {
+                    console.error(currentTest.id, err);
+                    var end = performance.now();
+                    elem.find("td.t").text((end - start).toFixed(1) + " ms");
+                    $state.html("<span>Failed</span><br /><small class='text-muted'>show more</small>");
+                    $state.addClass("bg-danger").data("error", err);
+                });
+        }
+
+        $("#rsa-1 button.run").click(function(evt){
+            evt.preventDefault();
+            var currentTest = runTests["rsa-1"];
+            return action(currentTest);
+        });
+        $("#rsa-1b button.run").click(function(evt){
+            evt.preventDefault();
+            var currentTest = runTests["rsa-1b"];
+            return action(currentTest);
+        });
+
+
+        $("body").on("click", ".s", function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            var error = $(this).data("error");
+            if( !error )
+                return;
+            var $modal = $("#test-error-modal")
+            $modal.find(".modal-body").text(error.toString());
+            $modal.modal("show");
+        });
+
+        var currentTestNumber = 0;
+
+        var loop = function(fn){
+          return Q().then(fn).then(function(){
+            if (currentTestNumber != tests.length) {
+              return loop(fn)
+            } else {
+              return Q(null).thenResolve(null)
+            }
+          })
+        }
+        
+        loop(function(){
+            var currentTest = tests[currentTestNumber];
+            return action(currentTest).then(function(){
+                currentTestNumber += 1;
+            });
+        })
+
+
+    })();
+    </script>
+</body>
+</html>

@@ -2,26 +2,15 @@
 
 # PrivMX Crypto Java Script ....
 
-
-
 ## Information
 
-(...)
+...
 
-Hash
-HMAC
-AES
-XTEA
-RSA
-KeyDerivation
-ECC
-BIP39
-SRP
-Random
-
-(...)
+Keywords: Hash HMAC AES XTEA RSA KeyDerivation ECC BIP39 SRP Random ...
 
 This software is licensed under the MIT License.
+
+Projects which use the library: [PrivMX WebMail](https://privmx.com), ...
 
 
 ## Installation
@@ -159,8 +148,8 @@ interface LoginStep1Result {
 
 | Name | Description | Params | Result |
 |:-----|:------------|:-------|:-------|
-| reductKey | Reduct 32-bytes long key to 16-bytes long by SHA-256 and take first 16 bytes | Buffer key | Promise&lt;Buffer&gt; |
-| generateIv | Generate IV from index for AES (16 bytes long) | Buffer key<br />number index | Promise&lt;Buffer&gt; |
+| reductKey | Reducts 32-bytes long key to 16-bytes long by SHA-256 and takes first 16 bytes | Buffer key | Promise&lt;Buffer&gt; |
+| generateIv | Generates IV from index for AES (16 bytes long) | Buffer key<br />number index | Promise&lt;Buffer&gt; |
 
 ### Build
 

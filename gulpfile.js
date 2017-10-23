@@ -7,7 +7,6 @@ var sourcemaps = require('gulp-sourcemaps');
 var connect = require('gulp-connect');
 var gutil      = require('gulp-util');
 var watchify = require('watchify');
-var vfs = require('vinyl-fs');
 var runSequence = require('run-sequence');
 
 var config = {
@@ -32,34 +31,6 @@ var browserifyPrivmxCrypto = browserify({
     plugin: plugins
 });
 
-var browserifyWorker = browserify({
-    builtins: ["buffer", "crypto", "_process", "assert", "stream", "events", "util", "string_decoder"],
-    insertGlobals : true,
-    debug: config.debug,
-    cache: {},
-    packageCache: {},
-    plugin: plugins
-});
-
-function bundleWorker(){
-    gutil.log("bundling...");
-
-    return browserifyWorker
-        .require('q', {expose: 'q'})
-        .add('./src/crypto/webworker/Listener.js')
-        .ignore('./src/rsa/rsa-subtle.js')
-        .ignore('./src/crypto/CryptoSubtle.js')
-        .transform("babelify", {presets: ["es2015"]})
-        .bundle()
-        .pipe(source('PrivmxWorker.js'))
-        .pipe(buffer())
-        .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(config.production ? uglify() : gutil.noop())
-        .on('error', gutil.log)
-        .pipe(sourcemaps.write("./"))
-        .pipe(gulp.dest('./build'))
-}
-
 function bundlePrivmxCrypto(){
     gutil.log("bundling...");
 
@@ -80,26 +51,11 @@ function bundlePrivmxCrypto(){
         .pipe(gulp.dest('./build'))
 }
 
-gulp.task('jsWorker', bundleWorker);
 gulp.task('jsCrypto', bundlePrivmxCrypto);
 
 browserifyPrivmxCrypto.on('update', bundlePrivmxCrypto);
 browserifyPrivmxCrypto.on('log', gutil.log);
 browserifyPrivmxCrypto.on('error', gutil.log);;
-
-browserifyWorker.on('update', bundleWorker);
-browserifyWorker.on('log', gutil.log);
-browserifyWorker.on('error', gutil.log);;
-
-gulp.task('createLinkWorker', function(){
-    return vfs.src(['./build/PrivmxWorker.js', './build/PrivmxWorker.js.map'], {followSymlinks: false, read: false})
-        .pipe(vfs.symlink('./demo'));
-});
-
-gulp.task('createLinkCrypto', function(){
-    return vfs.src(['./build/privmx-crypto.js', './build/privmx-crypto.js.map'], {followSymlinks: false, read: false})
-        .pipe(vfs.symlink('./demo'));
-});
 
 gulp.task('web', function(){
     connect.server({
@@ -111,8 +67,8 @@ gulp.task('web', function(){
 })
 
 gulp.task('serve', [], function(){
-    runSequence(['jsWorker', 'jsCrypto'], ['createLinkWorker', 'createLinkCrypto'], 'web');
+    runSequence('jsCrypto', 'web');
     
 });
 
-gulp.task('default', ['jsWorker', 'jsCrypto']);
+gulp.task('default', ['jsCrypto']);

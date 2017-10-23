@@ -1,8 +1,4 @@
 /node_modules/*
-/demo/PrivfsWorker.js
-/demo/PrivmxCrypto.js
-/demo/PrivmxWorker.js
-/demo/bower_components/*
 /build/*
 .project
 .settings

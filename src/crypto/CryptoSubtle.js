@@ -1,7 +1,6 @@
 var BrowserBuffer = require("../browserbuffer/BrowserBuffer");
 var Q = require("q");
 var Crypto = require("./Crypto");
-var IllegalArgumentException = require("privmx-exception").IllegalArgumentException;
 
 function CryptoSubtle() {
 }
@@ -38,7 +37,7 @@ CryptoSubtle.prototype.isSupported = function() {
 CryptoSubtle.prototype.sha1 = function(data) {
     return Q().then(function() {
         if (!BrowserBuffer.isBuffer(data)) {
-            throw new IllegalArgumentException("data", data);
+            throw new Error("Invalid argument: data - expected Buffer");
         }
         return window.crypto.subtle.digest({name: "SHA-1"}, BrowserBuffer.bufferToArray(data, false)).then(BrowserBuffer.arrayToBuffer);
     });
@@ -56,7 +55,7 @@ CryptoSubtle.prototype.sha1_check = function() {
 CryptoSubtle.prototype.sha256 = function(data) {
     return Q().then(function() {
         if (!BrowserBuffer.isBuffer(data)) {
-            throw new IllegalArgumentException("data", data);
+            throw new Error("Invalid argument: data - expected Buffer");
         }
         return window.crypto.subtle.digest({name: "SHA-256"}, BrowserBuffer.bufferToArray(data, false)).then(BrowserBuffer.arrayToBuffer);
     });
@@ -70,7 +69,7 @@ CryptoSubtle.prototype.sha256 = function(data) {
 CryptoSubtle.prototype.sha384 = function(data) {
     return Q().then(function() {
         if (!BrowserBuffer.isBuffer(data)) {
-            throw new IllegalArgumentException("data", data);
+            throw new Error("Invalid argument: data - expected Buffer");
         }
         return window.crypto.subtle.digest({name: "SHA-384"}, BrowserBuffer.bufferToArray(data, false)).then(BrowserBuffer.arrayToBuffer);
     });
@@ -84,7 +83,7 @@ CryptoSubtle.prototype.sha384 = function(data) {
 CryptoSubtle.prototype.sha512 = function(data) {
     return Q().then(function() {
         if (!BrowserBuffer.isBuffer(data)) {
-            throw new IllegalArgumentException("data", data);
+            throw new Error("Invalid argument: data - expected Buffer");
         }
         return window.crypto.subtle.digest({name: "SHA-512"}, BrowserBuffer.bufferToArray(data, false)).then(BrowserBuffer.arrayToBuffer);
     });
@@ -100,13 +99,13 @@ CryptoSubtle.prototype.sha512 = function(data) {
 CryptoSubtle.prototype.aes256CbcPkcs7Encrypt = function(data, key, iv) {
     return Q().then(function() {
         if (!BrowserBuffer.isBuffer(data) || data.length == 0) {
-            throw new IllegalArgumentException("data", data);
+            throw new Error("Invalid argument: data - expected not empty Buffer");
         }
         if (!BrowserBuffer.isBuffer(key) || key.length != 32) {
-            throw new IllegalArgumentException("key", key);
+            throw new Error("Invalid argument: key - expected Buffer 32 bytes long");
         }
         if (!BrowserBuffer.isBuffer(iv) || iv.length != 16) {
-            throw new IllegalArgumentException("iv", iv);
+            throw new Error("Invalid argument: iv - expected Buffer 16 bytes long");
         }
         return window.crypto.subtle.importKey("raw", BrowserBuffer.bufferToArray(key, false), "AES-CBC", true, ["encrypt"]).then(function(key) {
             return window.crypto.subtle.encrypt({name: "AES-CBC", iv: BrowserBuffer.bufferToArray(iv, false)}, key, BrowserBuffer.bufferToArray(data, false));
@@ -124,13 +123,13 @@ CryptoSubtle.prototype.aes256CbcPkcs7Encrypt = function(data, key, iv) {
 CryptoSubtle.prototype.aes256CbcPkcs7Decrypt = function(data, key, iv) {
     return Q().then(function() {
         if (!BrowserBuffer.isBuffer(data) || data.length == 0) {
-            throw new IllegalArgumentException("data", data);
+            throw new Error("Invalid argument: data - expected not empty Buffer");
         }
         if (!BrowserBuffer.isBuffer(key) || key.length != 32) {
-            throw new IllegalArgumentException("key", key);
+            throw new Error("Invalid argument: key - expected Buffer 32 bytes long");
         }
         if (!BrowserBuffer.isBuffer(iv) || iv.length != 16) {
-            throw new IllegalArgumentException("iv", iv);
+            throw new Error("Invalid argument: iv - expected Buffer 16 bytes long");
         }
         return window.crypto.subtle.importKey("raw", BrowserBuffer.bufferToArray(key, false), "AES-CBC", true, ["decrypt"]).then(function(key) {
             return window.crypto.subtle.decrypt({name: "AES-CBC", iv: BrowserBuffer.bufferToArray(iv, false)}, key, BrowserBuffer.bufferToArray(data, false));

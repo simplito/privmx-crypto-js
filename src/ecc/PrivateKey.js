@@ -7,7 +7,6 @@ var assert      = require('assert');
 var Crypto      = require("./Crypto");
 var BN          = require('bn.js');
 var ECIES       = require("./ECIES");
-var randomBytes   = require("randombytes");
 
 function PrivateKey(key){
     this.key = key;
@@ -25,8 +24,8 @@ PrivateKey.getSafeBn = function(buffer) {
     return d;
 }
 
-PrivateKey.generateRandom = function() {
-    return PrivateKey.generateFromBuffer(randomBytes(32));
+PrivateKey.generateRandom = function(rng) {
+    return PrivateKey.generateFromBuffer(rng.bytes(32));
 };
 
 PrivateKey.generateFromBuffer = function(buffer){

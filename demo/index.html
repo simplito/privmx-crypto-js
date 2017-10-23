@@ -4,7 +4,7 @@
     <title>Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
     <style> .n { word-break: break-all; word-wrap: break-word; }</style>
 </head>
 <body>
@@ -206,8 +206,8 @@
 </div>
 
     <script src="privmx-crypto.js"></script>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
 
     <script>
     (function() {
@@ -621,7 +621,7 @@
                                 '-----END PRIVATE KEY-----'
                            )
                         {
-                            throw new Exception("Unexpected result");
+                            throw new Error("Unexpected result");
                         }
                     })
                 }

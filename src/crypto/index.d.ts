@@ -3,12 +3,22 @@ import utils = require("../utils");
 import Q = require("q");
 import BN = require("bn.js");
 
+export interface Rng {
+    feed(seed: Buffer): void;
+    int32(): number;
+    double(): number;
+    bytes(num: number): Buffer;
+    bits(num: number): Buffer;
+    bn(max: BN): BN;
+}
+
 export interface ServiceType {
     writeEntropy(buffer: Buffer): void;
     startEntropy(): void;
     feed(consumer: {randomFeed(data: Buffer): any}|{execute(method: string, args: any[]): any}): void;
     init(path: string): void
     execute(method: string, params: any): Q.Promise<any>;
+    randomGenerator(seed?: Buffer): Rng;
     randomFeed(seed: Buffer): void;
     randomInt32(): number;
     randomDouble(): number;

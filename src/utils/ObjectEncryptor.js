@@ -1,5 +1,4 @@
 var BrowserBuffer = require("../browserbuffer/BrowserBuffer");
-var IllegalArgumentException = require("privmx-exception").IllegalArgumentException;
 var CryptoService = require("../crypto/Service");
 
 /**
@@ -11,7 +10,7 @@ var CryptoService = require("../crypto/Service");
  */
 function ObjectEncryptor(key, encryptOptions, decryptOptions) {
     if (!BrowserBuffer.isBuffer(key) || key.length != 32) {
-        throw new IllegalArgumentException("key", key);
+        throw new Error("Invalid argument: key - expected Buffer 32 bytes long");
     }
     Object.defineProperty(this, "key", {value: key, enumerable: true});
     this.encryptOptions = encryptOptions || CryptoService.privmxOptAesWithSignature();

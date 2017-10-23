@@ -4,7 +4,6 @@ var CryptoService = require("./Service");
 var _crypto = require("crypto");
 var XTEA = require("xtea");
 var BrowserBuffer = require("../browserbuffer/BrowserBuffer");
-var IllegalArgumentException = require("privmx-exception").IllegalArgumentException;
 var Ecc = require("../ecc");
 var SrpLogic = require("../srp").SrpLogic;
 var BN = require("bn.js");
@@ -81,13 +80,13 @@ Crypto.prototype.sha512 = function(data) {
  */
 Crypto.prototype.aes256CbcPkcs7Encrypt = function(data, key, iv) {
     if (!BrowserBuffer.isBuffer(data) || data.length == 0) {
-        throw new IllegalArgumentException("data", data);
+        throw new Error("Invalid argument: data - expected not empty Buffer");
     }
     if (!BrowserBuffer.isBuffer(key) || key.length != 32) {
-        throw new IllegalArgumentException("key", key);
+        throw new Error("Invalid argument: key - expected Buffer 32 bytes long");
     }
     if (!BrowserBuffer.isBuffer(iv) || iv.length != 16) {
-        throw new IllegalArgumentException("iv", iv);
+        throw new Error("Invalid argument: iv - expected Buffer 16 bytes long");
     }
     var cipher = _crypto.createCipheriv("aes-256-cbc", key, iv);
     return Buffer.concat([cipher.update(data), cipher.final()]);
@@ -102,13 +101,13 @@ Crypto.prototype.aes256CbcPkcs7Encrypt = function(data, key, iv) {
  */
 Crypto.prototype.aes256CbcNoPadEncrypt = function(data, key, iv) {
     if (!BrowserBuffer.isBuffer(data) || data.length == 0 || data.length % 16 != 0) {
-        throw new IllegalArgumentException("data", data);
+        throw new Error("Invalid argument: data - expected not empty Buffer with length divisible by 16");
     }
     if (!BrowserBuffer.isBuffer(key) || key.length != 32) {
-        throw new IllegalArgumentException("key", key);
+        throw new Error("Invalid argument: key - expected Buffer 32 bytes long");
     }
     if (!BrowserBuffer.isBuffer(iv) || iv.length != 16) {
-        throw new IllegalArgumentException("iv", iv);
+        throw new Error("Invalid argument: iv - expected Buffer 16 bytes long");
     }
     var cipher = _crypto.createCipheriv("aes-256-cbc", key, iv);
     cipher.setAutoPadding(false);
@@ -124,13 +123,13 @@ Crypto.prototype.aes256CbcNoPadEncrypt = function(data, key, iv) {
  */
 Crypto.prototype.aes256CbcPkcs7Decrypt = function(data, key, iv) {
     if (!BrowserBuffer.isBuffer(data) || data.length == 0) {
-        throw new IllegalArgumentException("data", data);
+        throw new Error("Invalid argument: data - expected not empty Buffer");
     }
     if (!BrowserBuffer.isBuffer(key) || key.length != 32) {
-        throw new IllegalArgumentException("key", key);
+        throw new Error("Invalid argument: key - expected Buffer 32 bytes long");
     }
     if (!BrowserBuffer.isBuffer(iv) || iv.length != 16) {
-        throw new IllegalArgumentException("iv", iv);
+        throw new Error("Invalid argument: iv - expected Buffer 16 bytes long");
     }
     var cipher = _crypto.createDecipheriv("aes-256-cbc", key, iv)
     return Buffer.concat([cipher.update(data), cipher.final()]);
@@ -145,13 +144,13 @@ Crypto.prototype.aes256CbcPkcs7Decrypt = function(data, key, iv) {
  */
 Crypto.prototype.aes256CbcNoPadDecrypt = function(data, key, iv) {
     if (!BrowserBuffer.isBuffer(data) || data.length == 0 || data.length % 16 != 0) {
-        throw new IllegalArgumentException("data", data);
+        throw new Error("Invalid argument: data - expected not empty Buffer with length divisible by 16");
     }
     if (!BrowserBuffer.isBuffer(key) || key.length != 32) {
-        throw new IllegalArgumentException("key", key);
+        throw new Error("Invalid argument: key - expected Buffer 32 bytes long");
     }
     if (!BrowserBuffer.isBuffer(iv) || iv.length != 16) {
-        throw new IllegalArgumentException("iv", iv);
+        throw new Error("Invalid argument: iv - expected Buffer 16 bytes long");
     }
     var cipher = _crypto.createDecipheriv("aes-256-cbc", key, iv)
     cipher.setAutoPadding(false);
@@ -166,10 +165,10 @@ Crypto.prototype.aes256CbcNoPadDecrypt = function(data, key, iv) {
  */
 Crypto.prototype.xteaEcbPkcs7Encrypt = function(data, key) {
     if (!BrowserBuffer.isBuffer(data) || data.length == 0) {
-        throw new IllegalArgumentException("data", data);
+        throw new Error("Invalid argument: data - expected not empty Buffer");
     }
     if (!BrowserBuffer.isBuffer(key) || key.length != 16) {
-        throw new IllegalArgumentException("key", key);
+        throw new Error("Invalid argument: key - expected Buffer 16 bytes long");
     }
     return XTEA.encrypt(data, key, "ecb");
 }
@@ -182,10 +181,10 @@ Crypto.prototype.xteaEcbPkcs7Encrypt = function(data, key) {
  */
 Crypto.prototype.xteaEcbPkcs7Decrypt = function(data, key) {
     if (!BrowserBuffer.isBuffer(data) || data.length == 0) {
-        throw new IllegalArgumentException("data", data);
+        throw new Error("Invalid argument: data - expected not empty Buffer");
     }
     if (!BrowserBuffer.isBuffer(key) || key.length != 16) {
-        throw new IllegalArgumentException("key", key);
+        throw new Error("Invalid argument: key - expected Buffer 16 bytes long");
     }
     return XTEA.decrypt(data, key, "ecb");
 }
@@ -400,10 +399,10 @@ Crypto.prototype.hkdfSha256 = function(key, salt, info, len) {
  */
 Crypto.prototype.aes256Ecb = function (data, key) {
     if (!BrowserBuffer.isBuffer(data) || data.length == 0 || data.length % 16 != 0) {
-        throw new IllegalArgumentException("data", data);
+        throw new Error("Invalid argument: data - expected not empty Buffer with length divisible by 16");
     }
     if (!BrowserBuffer.isBuffer(key) || (key.length != 32 && key.length != 16)) {
-        throw new IllegalArgumentException("key", key);
+        throw new Error("Invalid argument: key - expected Buffer 32 bytes long");
     }
     var cipher = _crypto.createCipheriv("aes-256-ecb", key, '');
     cipher.setAutoPadding(false);
@@ -418,10 +417,10 @@ Crypto.prototype.aes256Ecb = function (data, key) {
  */
 Crypto.prototype.aes256EcbDecrypt = function (data, key) {
     if (!BrowserBuffer.isBuffer(data) || data.length == 0 || data.length % 16 != 0) {
-        throw new IllegalArgumentException("data", data);
+        throw new Error("Invalid argument: data - expected not empty Buffer with length divisible by 16");
     }
     if (!BrowserBuffer.isBuffer(key) || key.length != 32) {
-        throw new IllegalArgumentException("key", key);
+        throw new Error("Invalid argument: key - expected Buffer 32 bytes long");
     }
     var cipher = _crypto.createDecipheriv("aes-256-ecb", key, '');
     cipher.setAutoPadding(false);

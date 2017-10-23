@@ -2,7 +2,6 @@ var HDNode        = require("./HDNode");
 var BN            = require('bn.js');
 var PublicKey     = require('./PublicKey');
 var PrivateKey    = require('./PrivateKey');
-var randomBytes   = require("randombytes");
 
 function ExtKey(key) {
     this.key = key;
@@ -16,8 +15,8 @@ ExtKey.fromSeed = function(seed) {
     return new ExtKey(HDNode.fromSeedBuffer(seed));
 };
 
-ExtKey.generateRandom = function() {
-    return ExtKey.generateFromBuffer(randomBytes(64));
+ExtKey.generateRandom = function(rng) {
+    return ExtKey.generateFromBuffer(rng.bytes(64));
 };
 
 ExtKey.generateFromBuffer = function(buffer) {

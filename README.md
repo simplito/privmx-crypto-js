@@ -161,12 +161,11 @@ gulp
 
 #### Browser tests
 ```
-gulp serve
+npm start
 ```
-and go to http://localhost:8123/
+and browse http://localhost:8123/
 
 #### Mocha tests
 ```
-./node_modules/.bin/mocha test/rsatests.js
-./node_modules/.bin/mocha test/srptest.js
+npm test
 ```

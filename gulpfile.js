@@ -66,9 +66,6 @@ gulp.task('web', function(){
     });
 })
 
-gulp.task('serve', [], function(){
-    runSequence('jsCrypto', 'web');
-    
-});
+gulp.task('serve', gulp.series('jsCrypto', 'web'));
 
-gulp.task('default', ['jsCrypto']);
+gulp.task('default', gulp.series('jsCrypto'));

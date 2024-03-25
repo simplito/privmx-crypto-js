@@ -30,7 +30,7 @@
     "parse-asn1": "^5.0.0",
     "pbkdf2": "^3.0.4",
     "q": "^1.4.1",
-    "seedrandom": "^2.4.2",
+    "seedrandom": "^3.0.5",
     "typeforce": "^1.6.2",
     "xtea": "^1.0.0"
   },

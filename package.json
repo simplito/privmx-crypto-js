@@ -31,6 +31,7 @@
     "pbkdf2": "^3.0.4",
     "q": "^1.4.1",
     "seedrandom": "^3.0.5",
+    "timers-browserify": "^2.0.12",
     "typeforce": "^1.6.2",
     "xtea": "^1.0.0"
   },

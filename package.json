@@ -30,7 +30,8 @@
     "parse-asn1": "^5.0.0",
     "pbkdf2": "^3.0.4",
     "q": "^1.4.1",
-    "seedrandom": "^2.4.2",
+    "seedrandom": "^3.0.5",
+    "timers-browserify": "^2.0.12",
     "typeforce": "^1.6.2",
     "xtea": "^1.0.0"
   },
@@ -39,7 +40,7 @@
     "babel-preset-es2015": "^6.18.0",
     "babelify": "^7.3.0",
     "browserify": "^13.1.1",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-connect": "^5.0.0",
     "gulp-sourcemaps": "^2.2.0",
     "gulp-uglify": "^2.0.0",
@@ -48,8 +49,8 @@
     "phantom": "^3.2.1",
     "phridge": "^2.0.0",
     "run-sequence": "^1.2.2",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0",
     "watchify": "^3.8.0"
   }
 }

@@ -7,7 +7,6 @@ var sourcemaps = require('gulp-sourcemaps');
 var connect = require('gulp-connect');
 var gutil      = require('gulp-util');
 var watchify = require('watchify');
-var runSequence = require('run-sequence');
 
 var config = {
     production: !!gutil.env.production,
@@ -35,6 +34,7 @@ function bundlePrivmxCrypto(){
     gutil.log("bundling...");
 
     return browserifyPrivmxCrypto
+        .require('timers-browserify', { expose: 'timers' })
         .require('q', {expose: 'q'})
         .add('./src/crypto/webworker/Listener.js')
         .require('./src/ecc/index.js', {expose: 'ecc'})
@@ -66,9 +66,6 @@ gulp.task('web', function(){
     });
 })
 
-gulp.task('serve', [], function(){
-    runSequence('jsCrypto', 'web');
-    
-});
+gulp.task('serve', gulp.series('jsCrypto', 'web'));
 
-gulp.task('default', ['jsCrypto']);
+gulp.task('default', gulp.series('jsCrypto'));

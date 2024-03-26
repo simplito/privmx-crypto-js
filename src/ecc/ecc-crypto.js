@@ -20,8 +20,8 @@ const utils           = require("../openssl/openssl-utils");
 var CryptoService = null;
 function init(service)
 {
-    var isNode = new Function("try {return this===global;}catch(e){ return false;}");
-    if( !isNode() )
+    var isNode = typeof process !== 'undefined' && !!process.versions && !!process.versions.node;
+    if( !isNode )
     {
         this.ecdsaSign = signBrowser;
         this.ecdsaVerify = verifyBrowser;

@@ -8,7 +8,7 @@ var CryptoSubtle = require("./CryptoSubtle");
 var Crypto = require("./Crypto");
 var privmxHandler = require("./privmx-handler");
 
-var isNode = new Function("try {return this===global;}catch(e){ return false;}");
+var isNode = typeof process !== 'undefined' && !!process.versions && !!process.versions.node;
 
 function Service() {
     this.rng = new Rng();
@@ -126,7 +126,7 @@ Service.prototype.init = function(path) {
     });
 
     this.handlers.push( require("../ecc/ecc-crypto") );
-    if (isNode()) {
+    if (isNode) {
         this.handlers.push( require("../rsa/rsa-crypto") );
     } else {
         this.handlers.push( require("../rsa/rsa-browser") );

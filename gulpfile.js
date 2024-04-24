@@ -2,7 +2,7 @@ var browserify = require('browserify');
 var gulp = require('gulp');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
-var uglify = require('gulp-uglify');
+var terser = require('gulp-terser');
 var sourcemaps = require('gulp-sourcemaps');
 var connect = require('gulp-connect');
 var log      = require('fancy-log');
@@ -53,7 +53,7 @@ function bundlePrivmxCrypto(){
         .pipe(source('privmx-crypto.js'))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(config.production ? uglify({ mangle: {except: ['Buffer']}}) : noop())
+        .pipe(config.production ? terser({ mangle: {reserved: ['Buffer']}}) : noop())
         .on('error', log)
         .pipe(sourcemaps.write("./"))
         .pipe(gulp.dest('./build'))

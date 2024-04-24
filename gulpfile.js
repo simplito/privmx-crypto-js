@@ -40,7 +40,7 @@ function bundlePrivmxCrypto(){
         .require('./src/ecc/index.js', {expose: 'ecc'})
         .require('buffer', {expose: 'buffer'})
         .require('./src/index.js', {expose: 'privmx-crypto'})
-        .transform("babelify", {presets: ["es2015"]})
+        .transform("babelify", {presets: [["@babel/preset-env", {"targets": {"chrome": "60"}}]]})
         .bundle()
         .pipe(source('privmx-crypto.js'))
         .pipe(buffer())

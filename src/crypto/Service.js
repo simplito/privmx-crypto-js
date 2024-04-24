@@ -17,6 +17,7 @@ function Service() {
     this.entropy = new Buffer(0);
     this.maxEntropy = 64 * 1024; // 64kb
     this.r = 0;
+    this.timeEntropyEnabled = true;
 }
 
 /**
@@ -69,8 +70,10 @@ Service.prototype.startEntropy = function() {
         buffer.writeInt32BE(date & 0xFFFFFFFF, 4);
 
         self.writeEntropy(buffer);
-
-        setTimeout(feeder, self.randomBits(10).readUInt16BE(0));
+        
+        if (self.timeEntropyEnabled) {
+            setTimeout(feeder, self.randomBits(10).readUInt16BE(0));
+        }
     })();
 };
 

@@ -21,6 +21,8 @@ var cipher512 = "Xp5uW0NY8bvNJRXS0KSVXXZzMpqdwrWmQrx3f9SArsdBKcGguI030dB8FcIZD6O
 // echo -n "abcd" | openssl dgst -sha256 -sign rsa512.pem | base64 -w0
 var sign512   = "IZSfYu01OGx6PSdWiZpS4oQlMIG9CChkBAbheHinz/l+obezD8b37/9Tj5hUZ+cHtgiwcRXOMe9L7PcLdulniA==";
 
+CryptoService.timeEntropyEnabled = false;
+
 describe('CryptoService', function() {
   it('#rsaGenerateKey', function() {
     return CryptoService.rsaGenerateKey(256).then((key) => {

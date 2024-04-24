@@ -5,20 +5,28 @@ var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var connect = require('gulp-connect');
-var gutil      = require('gulp-util');
+var log      = require('fancy-log');
 var watchify = require('watchify');
+var minimist = require('minimist');
+var through = require('through2');
+
+var env = minimist(process.argv.slice(2));
 
 var config = {
-    production: !!gutil.env.production,
-    debug: !!gutil.env.debug,
-    watch: !!gutil.env.watch
+    production: !!env.production,
+    debug: !!env.debug,
+    watch: !!env.watch
 };
+
+function noop() {
+    return through.obj();
+}
 
 var plugins = [];
 
 if(config.watch) {
     plugins.push(watchify);
-    gutil.log("plugins:",plugins);
+    log("plugins:",plugins);
 }
 
 var browserifyPrivmxCrypto = browserify({
@@ -31,7 +39,7 @@ var browserifyPrivmxCrypto = browserify({
 });
 
 function bundlePrivmxCrypto(){
-    gutil.log("bundling...");
+    log("bundling...");
 
     return browserifyPrivmxCrypto
         .require('timers-browserify', { expose: 'timers' })
@@ -45,8 +53,8 @@ function bundlePrivmxCrypto(){
         .pipe(source('privmx-crypto.js'))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(config.production ? uglify({ mangle: {except: ['Buffer']}}) : gutil.noop())
-        .on('error', gutil.log)
+        .pipe(config.production ? uglify({ mangle: {except: ['Buffer']}}) : noop())
+        .on('error', log)
         .pipe(sourcemaps.write("./"))
         .pipe(gulp.dest('./build'))
 }
@@ -54,8 +62,8 @@ function bundlePrivmxCrypto(){
 gulp.task('jsCrypto', bundlePrivmxCrypto);
 
 browserifyPrivmxCrypto.on('update', bundlePrivmxCrypto);
-browserifyPrivmxCrypto.on('log', gutil.log);
-browserifyPrivmxCrypto.on('error', gutil.log);;
+browserifyPrivmxCrypto.on('log', log);
+browserifyPrivmxCrypto.on('error', log);;
 
 gulp.task('web', function(){
     connect.server({

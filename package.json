@@ -47,7 +47,7 @@
     "gulp-sourcemaps": "^2.2.0",
     "gulp-terser": "^2.1.0",
     "minimist": "^1.2.8",
-    "mocha": "^10.3.0",
+    "mocha": "^10.8.2",
     "through2": "^2.0.5",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",

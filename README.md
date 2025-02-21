@@ -1,30 +1,14 @@
 
 
-# PrivMX Crypto Java Script ....
+# PrivMX Crypto Java Script 
 
 ## Information
 
-...
-
-Keywords: Hash HMAC AES XTEA RSA KeyDerivation ECC BIP39 SRP Random ...
+Keywords: Hash HMAC AES XTEA RSA KeyDerivation ECC BIP39 SRP Random 
 
 This software is licensed under the MIT License.
 
-Projects which use the library: [PrivMX WebMail](https://privmx.com), ...
-
-
-## Installation
-
-...
-
-
-
-## Implementation details
-
-
-...
-
-
+Projects which use the library: [PrivMX WebMail](https://privmx.dev)
 
 ## API description
 

@@ -21,7 +21,7 @@
   "dependencies": {
     "asn1.js": "^4.9.1",
     "bip39": "^2.2.0",
-    "bn.js": "^4.12.0",
+    "bn.js": "^4.12.3",
     "browserify-aes": "^1.0.1",
     "bs58check": "~1.0.5",
     "create-hash": "^1.1.1",
